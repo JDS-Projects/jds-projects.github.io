@@ -103,6 +103,17 @@
   <div id="captcha-container"></div>
   <button type="submit">Versturen</button>
 </form>
+            <script>
+                grecaptcha.ready(function() {
+  grecaptcha.execute('JOUW_SITE_KEY', {action: 'submit'}).then(function(token) {
+    // Voeg het token toe aan een verborgen veld in je formulier
+    var recaptchaResponse = document.getElementById('g-recaptcha-response');
+    if (recaptchaResponse) {
+      recaptchaResponse.value = token;
+    }
+  });
+});
+            </script>
         </div>
 
 
