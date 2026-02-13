@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome | JDS Projects</title>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Lc8kmosAAAAAAnRE1qL3OH2zWtUnlDEh9B20_RD"></script>
+    
     <style>
         :root {
             --primary: #38bdf8;
@@ -55,29 +57,18 @@
 
         h1, h2 { color: var(--primary); }
         
-        .status-badge-online {
-            background: #22c55e;
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            vertical-align: middle;
-        }
-
-        .status-badge-offline {
-            background: #ff0808;
-            color: white;
-            padding: 0.2rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            vertical-align: middle;
-        }
-
         footer {
             text-align: center;
             padding: 2rem;
             font-size: 0.9rem;
             opacity: 0.7;
+        }
+
+        /* Kleine tekst voor reCAPTCHA compliance (verplicht als je de badge verbergt) */
+        .captcha-policy {
+            font-size: 10px;
+            opacity: 0.6;
+            margin-top: 10px;
         }
     </style>
     <meta name="google-site-verification" content="3-x8g6U4-hmJFKCgwHdowg0kZ0GQZT1mQuPs7MJUr3s" />
@@ -86,37 +77,31 @@
 
 <header>
     <h1>JDS Projects</h1>
-    
 </header>
 
 <div class="container">
     <section>
         <h2>Play</h2>
         <p>Servers</p>
-
     </section>
+
     <div class="grid">
         <div class="card">
             <h3>Operatie Mocktail</h3>
-            <p>Pagina: <a href="operatie-mocktail.my.canva.site" style="color: aqua;">operatie-mocktail.my.canva.site</a></p>
-           <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
-  <div id="captcha-container"></div>
-  <button type="submit">Versturen</button>
-</form>
-            <script>
-                grecaptcha.ready(function() {
-  grecaptcha.execute('6Lc8kmosAAAAAAnRE1qL3OH2zWtUnlDEh9B20_RD', {action: 'submit'}).then(function(token) {
-    // Voeg het token toe aan een verborgen veld in je formulier
-    var recaptchaResponse = document.getElementById('g-recaptcha-response');
-    if (recaptchaResponse) {
-      recaptchaResponse.value = token;
-    }
-  });
-});
-            </script>
+            <p>Pagina: <a href="https://operatie-mocktail.my.canva.site" style="color: aqua;">operatie-mocktail.my.canva.site</a></p>
+            
+            <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+                <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response">
+                
+                <button type="submit" style="background: var(--primary); border: none; padding: 0.5rem 1rem; border-radius: 5px; cursor: pointer;">Versturen</button>
+                
+                <p class="captcha-policy">
+                    This site is protected by reCAPTCHA and the Google 
+                    <a href="https://policies.google.com/privacy" style="color: #ccc;">Privacy Policy</a> and 
+                    <a href="https://policies.google.com/terms" style="color: #ccc;">Terms of Service</a> apply.
+                </p>
+            </form>
         </div>
-
-
     </div>
 
     <section style="margin-top: 3rem; text-align: center;">
@@ -126,8 +111,19 @@
 </div>
 
 <footer>
-    &copy; 2024 JDS Projects - Gehost via GitHub Pages
+    &copy; 2024 JDS Projects - Gehost via Netlify
 </footer>
+
+<script>
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6Lc8kmosAAAAAAnRE1qL3OH2zWtUnlDEh9B20_RD', {action: 'submit'}).then(function(token) {
+      var recaptchaResponse = document.getElementById('g-recaptcha-response');
+      if (recaptchaResponse) {
+        recaptchaResponse.value = token;
+      }
+    });
+  });
+</script>
 
 </body>
 </html>
