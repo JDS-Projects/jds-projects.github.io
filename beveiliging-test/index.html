@@ -95,10 +95,18 @@
             <p>
                 <label>Naam: <input type="text" name="name" required /></label>
             </p>
-            
-            <div class="g-recaptcha" data-sitekey="6LfKIWssAAAAACyaBpgK08cMGbG4nP9K5b8TaFqZ"></div>
+            <div class="g-recaptcha" 
+                data-sitekey="6LfKIWssAAAAACyaBpgK08cMGbG4nP9K5b8TaFqZ" 
+                data-callback="enableBtn"></div>
 
-            <button type="submit">Versturen</button>
+            <button type="submit" id="submit-btn" disabled>Versturen</button>
+
+            <script>
+            // Deze functie wordt pas uitgevoerd als de checkbox op groen springt
+            function enableBtn() {
+                document.getElementById("submit-btn").disabled = false;
+            }
+            </script>
         </form>
     </section>
 </div>
