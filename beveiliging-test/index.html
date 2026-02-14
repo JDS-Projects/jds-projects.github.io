@@ -85,17 +85,21 @@
         <p>Servers</p>
     </section>
 
-    <div class="grid">
-        <div class="card">
-            <h3>Operatie Mocktail</h3>
-            <p>Pagina: <a href="https://operatie-mocktail.my.canva.site" style="color: aqua;">operatie-mocktail.my.canva.site</a></p>
-
-        </div>
-    </div>
 
     <section style="margin-top: 3rem; text-align: center;">
         <h2>Contact & Info</h2>
         <p>Wil je meer weten over een specifiek project? Houd deze pagina dan in de gaten voor updates!</p>
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+        <form name="contact" method="POST" data-netlify="true" data-netlify-recaptcha="true">
+            <p>
+                <label>Naam: <input type="text" name="name" required /></label>
+            </p>
+            
+            <div class="g-recaptcha" data-sitekey="6LfKIWssAAAAACyaBpgK08cMGbG4nP9K5b8TaFqZ"></div>
+
+            <button type="submit">Versturen</button>
+        </form>
     </section>
 </div>
 
